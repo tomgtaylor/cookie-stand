@@ -2,6 +2,7 @@
 
 let hours = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm'];
 
+let resultsDiv = document.getElementById('results');
 
 //-------------------Object 1----------------------------------
 
@@ -166,26 +167,43 @@ let lima = {
         this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
       }
-      function list(shop) {
-        let ul = document.getElementById(shopName);
-        for (let i = 0; i < hours.length; i++) {
-          let li = document.createElement('li');
-          li.appendChild(document.createTextNode(Hours[i] + ': ' + Math.floor(shop.hourlySales[i] * city.avgSales) + ' cookies'));
-          ul.appendChild(li);
-        }
-        let li = document.createElement('li');
-        li.appendChild(document.createTextNode('Total: ' + shopName.totalSales + ' cookies'));
-        ul.appendChild(li);
-      }
-      return list(lima);
-    },
-  };
+  },
+};
+
+
+//-------------------------------------------------------------
+function renderCityData(city) {
+  let div = document.createElement('div');
+  let h2 = document.createElement('h2');
+  h2.textContent = city.shopName;
+  div.appendChild(h2);
+  let ul = document.createElement('ul');
+  for (let i = 0; i < hours.length; i++) {
+    let li = document.createElement('li');
+    li.textContent = hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies';
+    // li.appendChild(document.createTextNode(Hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies'));
+    ul.appendChild(li);
+  }
+  let li = document.createElement('li');
+  li.textContent = 'Total: ' + city.totalSales + ' cookies';
+  
+  // li.appendChild(document.createTextNode('Total: ' + shopName.totalSales + ' cookies'));
+  ul.appendChild(li);
+  div.appendChild(ul); //
+  resultsDiv.appendChild(div);
+};
+
+seattle.generateCookieSales();
+lima.generateCookieSales();
+console.log(seattle);
+renderCityData(seattle);
+renderCityData(lima);
 
 // function list(shop) {
-//   let ul = document.getElementById(shop.shopName);
-//   for (let i = 0; i < hours.length; i++) {
-//     let li = document.createElement('li');
-//     li.appendChild(document.createTextNode(dayHours[i] + ': ' + Math.floor(shop.hourlySales[i] * city.avgSales) + ' cookies'));
+  //   let ul = document.getElementById(shop.shopName);
+  //   for (let i = 0; i < hours.length; i++) {
+    //     let li = document.createElement('li');
+//     li.appendChild(document.createTextNode(dayHours[i] + ': ' + Math.floor(shop.hrSales[i] * city.avgSales) + ' cookies'));
 //     ul.appendChild(li);
 //   }
 //   let li = document.createElement('li');

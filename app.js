@@ -32,8 +32,10 @@ let seattle = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -66,8 +68,10 @@ let tokyo = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -98,8 +102,10 @@ let dubai = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -130,8 +136,10 @@ let paris = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -147,7 +155,7 @@ let lima = {
     totalSales: 0,
     hourlyCust: [],
       //object method (function as a property of an object)
-    generateRandom: function(){
+        generateRandom: function(){
       let randomNumber = Math.round(Math.random() * (this.maxCust - this.minCust) + this.minCust);
       //console.log(randomNumber);
       return randomNumber;
@@ -164,14 +172,18 @@ let lima = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
-  },
+    
+    },
 };
 
+//------------------------------------------------------------
+//----------------------------Render City Data-----------------------------
 
-//-------------------------------------------------------------
 function renderCityData(city) {
   let div = document.createElement('div');
   let h2 = document.createElement('h2');
@@ -180,7 +192,7 @@ function renderCityData(city) {
   let ul = document.createElement('ul');
   for (let i = 0; i < hours.length; i++) {
     let li = document.createElement('li');
-    li.textContent = hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies';
+    li.textContent = hours[i] + ': ' + Math.floor(city.hrSales[i]) + ' cookies';
     // li.appendChild(document.createTextNode(Hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies'));
     ul.appendChild(li);
   }
@@ -193,37 +205,16 @@ function renderCityData(city) {
   resultsDiv.appendChild(div);
 };
 
+//--------------------------------------------------------------------------
+
 seattle.generateCookieSales();
+tokyo.generateCookieSales();
+dubai.generateCookieSales();
+paris.generateCookieSales();
 lima.generateCookieSales();
-console.log(seattle);
+
 renderCityData(seattle);
+renderCityData(tokyo);
+renderCityData(dubai);
+renderCityData(paris);
 renderCityData(lima);
-
-// function list(shop) {
-  //   let ul = document.getElementById(shop.shopName);
-  //   for (let i = 0; i < hours.length; i++) {
-    //     let li = document.createElement('li');
-//     li.appendChild(document.createTextNode(dayHours[i] + ': ' + Math.floor(shop.hrSales[i] * city.avgSales) + ' cookies'));
-//     ul.appendChild(li);
-//   }
-//   let li = document.createElement('li');
-//   li.appendChild(document.createTextNode('Total: ' + city.total + ' cookies'));
-//   ul.appendChild(li);
-// }
-
-// list(seattle);
-
-
-
-// list(tokyo);
-// list(dubai);
-// list(paris);
-// list(lima);
-
-// let stores = 
-// function render (stores) {
-//   let tableEl = document.getElementById('stores');
-//   let tableRowEl = document.createElement('tr');
-//   let nameEl = document.createElement('td');
-//   let 
-// }

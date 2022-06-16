@@ -32,8 +32,10 @@ let seattle = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -66,8 +68,10 @@ let tokyo = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -98,8 +102,10 @@ let dubai = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -130,8 +136,10 @@ let paris = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
     },
 };
@@ -164,9 +172,12 @@ let lima = {
     generateCookieSales: function(){
       this.generateHourlyCustomers();
       for (let i = 0; i < hours.length; i++){
-        this.hrSales.push(Math.ceil(this.hourlyCust[i] * this.avgSales));  //calc the  sales per hour and pushing it into the empty array in hrSales: []
+        let soldThisHour = Math.ceil(this.hourlyCust[i] * this.avgSales);
+        this.hrSales.push(soldThisHour);  //calc the  sales per hour and pushing it into the empty array in hrSales: []
         //console.log(this.hourlyCust[i]);
+        this.totalSales += soldThisHour; 
       }
+    
     },
 };
 
@@ -181,7 +192,7 @@ function renderCityData(city) {
   let ul = document.createElement('ul');
   for (let i = 0; i < hours.length; i++) {
     let li = document.createElement('li');
-    li.textContent = hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies';
+    li.textContent = hours[i] + ': ' + Math.floor(city.hrSales[i]) + ' cookies';
     // li.appendChild(document.createTextNode(Hours[i] + ': ' + Math.floor(city.hrSales[i] * city.avgSales) + ' cookies'));
     ul.appendChild(li);
   }
